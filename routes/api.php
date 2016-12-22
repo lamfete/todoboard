@@ -16,7 +16,3 @@ use Illuminate\Http\Request;
 Route::get('/user', function (Request $request) {
     return $request->user();
 })->middleware('auth:api');
-
-Route::resource('todo', 'TodoController');
-// Route::resource('authenticate', 'AuthenticateController', ['only' => ['index']]);
-// Route::post('authenticate', 'AuthenticateController@authenticate');

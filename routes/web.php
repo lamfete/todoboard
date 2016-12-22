@@ -12,5 +12,14 @@
 */
 
 Route::get('/', function () {
-    return view('welcome');
+    // return view('welcome');
+    return view('index');
+});
+
+Route::group(['prefix' => 'api'], function() {
+    Route::resource('todo', 'TodoController');
+    Route::resource('authenticate', 'AuthenticateController', ['only' => ['index']]);
+    Route::post('authenticate', 'AuthenticateController@authenticate');
+    // Route::post('todo', 'AuthenticateController@authenticate');
+    Route::get('authenticate/user', 'AuthenticateController@getAuthenticatedUser');
 });

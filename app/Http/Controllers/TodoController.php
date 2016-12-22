@@ -7,9 +7,15 @@ use App\Http\Requests;
 use App\Item as Item;
 use App\User as User;
 use Response;
+use Tymon\JWTAuth\Facades\JWTAuth;
+use Tymon\JWTAuthExceptions\JWTException;
 
 class TodoController extends Controller
 {
+    public function __construct() {
+        $this->middleware('jwt.auth', ['except' => ['authenticate']]);
+    }
+
     public function index(Request $request) {
         $search_term = $request->input('search');
         $limit = $request->input('limit')?$request->input('limit'):5;
