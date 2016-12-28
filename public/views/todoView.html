@@ -1,15 +1,17 @@
-<div class="col-sm-6 col-sm-offset-3">
-    <div class="well">
+<!--<div class="col-sm-6 col-sm-offset-3">
+    <div class="well">-->
+
         <h3>Todo List</h3>
         <div ng-init="todo.getTodos()">
             <div ng-if="todo.todos">
 
                 <ul ng-if="todo.todos.data.data">
-                    <li ng-repeat="item in todo.todos.data.data.data">
+                    <li ng-repeat="item in todo.todos.data.data.data | filter:todo.todos.data.data.data.item_status_id | filter:{item_status_id: 2}">
                         <h4>{{ item.item_body}}</h4>
                         <h4>{{ item.item_created_by}}</h4>
                     </li>
                 </ul>
+
             </div>
         </div>
 
@@ -17,5 +19,6 @@
             <strong>There was an error: </strong> {{user.error.error}}
             <br>Please go back and login again
         </div>
-    </div>
-</div>
+
+<!--    </div>
+</div>-->
